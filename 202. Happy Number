@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isHappy(long  a) {
+        long  n = a;
+        long long  sum = 0;
+        unordered_set<int>seen;
+        do {
+            sum=0;
+            while (n != 0) {
+                long long  la = n % 10;
+                sum += la * la;
+                n = n / 10;
+            }
+            if (sum == 1)
+                return true;
+            if(seen.find(sum)!=seen.end()){
+                return false;
+            }
+            seen.insert(sum);
+            n=sum;
+        } while (1);
+        
+    }
+};
