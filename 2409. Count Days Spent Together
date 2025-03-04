@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int convert_dasy_year(string day){
+        int months[12]={31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int month=stoi(day.substr(0,2));
+        int days=stoi(day.substr(3,2));
+
+        int total_days=days;
+        for(int i=0;i<month-1;i++){
+            total_days+=months[i];
+        }
+        return total_days;
+    }
+
+    int countDaysTogether(string arriveAlice, string leaveAlice, string arriveBob, string leaveBob) {
+        int bob_arive=convert_dasy_year(arriveBob);
+        int alice_arive=convert_dasy_year(arriveAlice);
+        int bob_leave=convert_dasy_year(leaveBob);
+        int alice_leave=convert_dasy_year(leaveAlice);
+
+       int start_overlap=max(alice_arive,bob_arive);
+       int end_over_lap=min(alice_leave,bob_leave);
+
+       return max(0,end_over_lap-start_overlap+1);
+    }
+};
