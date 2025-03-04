@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int pivotInteger(int n) {
+        if(n==1)return 1;
+        int total=n*(n+1)/2;
+        int right_of=0;
+       for(int i=1;i<=n;i++){
+        int left_of=i*(i+1)/2;
+        right_of=total-left_of+i;
+        if(left_of==right_of)return i;
+       }
+       return -1;
+    }
+};
