@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string convertToBase7(int num) {
+       string ans;
+       if(num==0)return "0";
+       bool isnegative=num<0;
+       num=abs(num);
+       while(num>0){
+        int la=num%7;
+        ans.append(to_string(la));
+        num/=7;
+       } 
+       if(isnegative)ans+="-";
+       reverse(ans.begin(),ans.end());
+       return ans;
+    }
+};
